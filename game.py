@@ -73,12 +73,7 @@ def main():
     t_piece = [[1, 4, 5, 6], [1, 4, 5, 9], [4, 5, 6, 9], [1, 5, 6, 9]]
     piece = input()  # I J L O S T Z
     print_grid()
-    """
-    00 01 02 03
-    10 11 12 13
-    20 21 22 23
-    30 31 32 33
-    """
+
     if piece == 'I':
         put(i_piece[0])
         rotate(i_piece, 4)
