@@ -57,10 +57,7 @@ def rotate(items, num_of_times):
         count += 1
 
 
-grid = np.array([[None, None, None, None],
-                 [None, None, None, None],
-                 [None, None, None, None],
-                 [None, None, None, None]])
+grid = np.full((4, 4), None)
 
 
 def main():
