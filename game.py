@@ -24,14 +24,14 @@ def put(item):
     reset_grid()
     for row in range(len(grid)):
         for col in range(len(grid)):
-            index_ = row + col
+            index = row + col
             if row == 1:
-                index_ += 3
+                index += 3
             elif row == 2:
-                index_ += 6
+                index += 6
             elif row == 3:
-                index_ += 9
-            if item[count] == index_:
+                index += 9
+            if item[count] == index:
                 grid[row][col] = 0
                 count += 1
                 if count > 3:
@@ -40,9 +40,21 @@ def put(item):
     print_grid()
 
 
-def rotate(items):
-    for item in items:
+def put2(item, num_of_time):
+    for _ in range(num_of_time):
         put(item)
+
+
+def rotate(items, num_of_times):
+    index = 1
+    count = 0
+    while count < num_of_times:
+        item = items[index]
+        put(item)
+        index += 1
+        if index == len(items):
+            index = 0
+        count += 1
 
 
 grid = np.array([[None, None, None, None],
@@ -67,33 +79,26 @@ def main():
     20 21 22 23
     30 31 32 33
     """
-
     if piece == 'I':
-        rotate(i_piece)
         put(i_piece[0])
+        rotate(i_piece, 4)
     elif piece == 'J':
-        rotate(j_piece)
         put(j_piece[0])
+        rotate(j_piece, 4)
     elif piece == 'L':
-        rotate(l_piece)
         put(l_piece[0])
+        rotate(l_piece, 4)
     elif piece == 'O':
-        put(o_piece[0])
-        rotate(o_piece)
-        rotate(o_piece)
-        rotate(o_piece)
-        rotate(o_piece)
+        put2(o_piece[0], 5)
     elif piece == 'S':
-        rotate(s_piece)
-        rotate(s_piece)
         put(s_piece[0])
+        rotate(s_piece, 4)
     elif piece == 'T':
-        rotate(t_piece)
         put(t_piece[0])
+        rotate(t_piece, 4)
     elif piece == 'Z':
-        rotate(z_piece)
-        rotate(z_piece)
         put(z_piece[0])
+        rotate(z_piece, 4)
     else:
         print("Unknown piece!")
 
