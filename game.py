@@ -68,7 +68,7 @@ def main():
     l_piece = [[1, 5, 9, 10], [2, 4, 5, 6], [1, 2, 6, 10], [4, 5, 6, 8]]
     j_piece = [[2, 6, 9, 10], [4, 5, 6, 10], [1, 2, 5, 9], [0, 4, 5, 6]]
     t_piece = [[1, 4, 5, 6], [1, 4, 5, 9], [4, 5, 6, 9], [1, 5, 6, 9]]
-    piece = input()  # I J L O S T Z
+    piece = input().upper()  # I J L O S T Z
     print_grid()
 
     if piece == 'I':
