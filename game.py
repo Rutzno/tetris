@@ -25,12 +25,6 @@ def put(item):
     for row in range(len(grid)):
         for col in range(len(grid)):
             index = col + 4 * row
-            # if row == 1:
-            #     index += 3
-            # elif row == 2:
-            #     index += 6
-            # elif row == 3:
-            #     index += 9
             if item[count] == index:
                 grid[row][col] = 0
                 count += 1
