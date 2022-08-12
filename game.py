@@ -1,6 +1,6 @@
 import numpy as np
 
-from Tetris.task.tetris.tetris import Board
+from tetris import Board
 
 
 def main():
