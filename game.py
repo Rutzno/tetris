@@ -1,5 +1,9 @@
 from tetris import Board
 
+__author__ = "Mack_TB"
+__since__ = "8/8/2022"
+__version__ = "1.0.2"
+
 
 def main():
     piece = input()  # I J L O S T Z
