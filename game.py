@@ -8,9 +8,9 @@ __version__ = "1.0.2"
 
 def main():
     piece = input()  # I J L O S T Z
-    dimensions = input().split(" ")
+    width, height = input().split(" ")
 
-    tetris = Board(int(dimensions[0]), int(dimensions[1]))
+    tetris = Board(int(width), int(height))
     tetris.print_grid()
     tetris.current_piece.extend(Board.symbols[piece])
     tetris.put(Board.symbols[piece][0])
