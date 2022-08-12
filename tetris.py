@@ -1,8 +1,9 @@
 import numpy as np
-
+"""
 __author__ = "Mack_TB"
-__since__ = "11/8/2022"
+__since__ = "11/8/2021"
 __version__ = "1.0.2"
+"""
 
 
 class Board:
