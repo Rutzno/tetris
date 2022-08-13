@@ -52,7 +52,6 @@ class Board:
 
     def to_right(self):
         if any(self.check_right_border()):
-            # print("border_right")
             self.go_down()
         else:
             self.move(11)
