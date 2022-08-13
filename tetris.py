@@ -56,7 +56,7 @@ class Board:
         else:
             self.move(11)
 
-    # shift all the element of a piece i.e. the unique piece and its rotated pieces
+    # shift all the elements of a piece i.e. a unique piece and its rotated pieces
     def move(self, step):
         if self.is_piece_on_floor():
             self.print_grid()
