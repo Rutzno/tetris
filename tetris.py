@@ -27,7 +27,7 @@ class Board:
         self.width = width
         self.height = height
         self.grid = np.full((height, width), None)
-        self.current_piece = []  # like 'I': [[4, 14, 24, 34], [3, 4, 5, 6]]
+        self.current_piece = []
         self.current_piece_index = 0
 
     def rotate(self):
