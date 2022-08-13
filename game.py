@@ -22,9 +22,9 @@ def main():
         elif command == "down":
             tetris.go_down()
         elif command == "left":
-            tetris.to_left()
+            tetris.go_left()
         elif command == "right":
-            tetris.to_right()
+            tetris.go_right()
         elif command == "rotate":
             tetris.rotate()
         else:

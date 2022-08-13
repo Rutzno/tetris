@@ -44,13 +44,13 @@ class Board:
     def go_down(self):
         self.move(10)
 
-    def to_left(self):
+    def go_left(self):
         if self.is_piece_on_left_border():
             self.go_down()
         else:
             self.move(9)
 
-    def to_right(self):
+    def go_right(self):
         if self.is_piece_on_right_border():
             self.go_down()
         else:
