@@ -51,7 +51,7 @@ class Board:
             self.move(9)
 
     def to_right(self):
-        if self.check_right_border():
+        if self.is_piece_on_right_border():
             self.go_down()
         else:
             self.move(11)
@@ -102,7 +102,7 @@ class Board:
         return any(True if n % 10 == 0 else False
                    for n in self.current_piece[self.current_piece_index])
 
-    def check_right_border(self):
+    def is_piece_on_right_border(self):
         return any(True if n % 10 == 9 else False
                    for n in self.current_piece[self.current_piece_index])
 
