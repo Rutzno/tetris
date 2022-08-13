@@ -51,7 +51,7 @@ class Board:
             self.move(9)
 
     def to_right(self):
-        if any(self.check_right_border()):
+        if self.check_right_border():
             self.go_down()
         else:
             self.move(11)
