@@ -31,7 +31,7 @@ class Board:
         self.current_piece_index = 0
 
     def rotate(self):
-        if self.is_piece_onfloor():
+        if self.is_piece_on_floor():
             self.print_grid()
         else:
             self.current_piece_index += 1
@@ -58,7 +58,7 @@ class Board:
 
     # shift all the element of a piece i.e. the unique piece and its rotated pieces
     def move(self, step):
-        if self.is_piece_onfloor():
+        if self.is_piece_on_floor():
             self.print_grid()
         else:
             for i in range(len(self.current_piece)):
@@ -106,7 +106,7 @@ class Board:
         return any(True if n % 10 == 9 else False
                    for n in self.current_piece[self.current_piece_index])
 
-    def is_piece_onfloor(self):
+    def is_piece_on_floor(self):
         return any(True if n // 10 == self.height-1 else False
                    for n in self.current_piece[self.current_piece_index])
 
