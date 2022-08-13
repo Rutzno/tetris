@@ -45,7 +45,7 @@ class Board:
         self.move(10)
 
     def to_left(self):
-        if self.check_left_border():
+        if self.is_piece_on_left_border():
             self.go_down()
         else:
             self.move(9)
@@ -98,7 +98,7 @@ class Board:
                 if self.grid[row][col] is not None:
                     self.grid[row][col] = None
 
-    def check_left_border(self):
+    def is_piece_on_left_border(self):
         return any(True if n % 10 == 0 else False
                    for n in self.current_piece[self.current_piece_index])
 
