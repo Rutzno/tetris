@@ -88,7 +88,8 @@ class Board:
                 if self.grid[row][col] is None:
                     print("-", end="") if col == self.width-1 else print("-", end=" ")
                 else:
-                    print(self.grid[row][col], end="") if col == self.width-1 else print(self.grid[row][col], end=" ")
+                    print(self.grid[row][col], end="") \
+                        if col == self.width-1 else print(self.grid[row][col], end=" ")
             print()
 
     def reset_grid(self):
