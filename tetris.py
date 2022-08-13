@@ -45,7 +45,7 @@ class Board:
         self.move(10)
 
     def to_left(self):
-        if any(self.check_left_border()):
+        if self.check_left_border():
             self.go_down()
         else:
             self.move(9)
