@@ -32,7 +32,6 @@ class Board:
 
     def rotate(self):
         if self.is_piece_onfloor():
-            # print("floor")
             self.print_grid()
         else:
             self.current_piece_index += 1
