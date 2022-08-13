@@ -37,7 +37,7 @@ class Board:
         else:
             self.current_piece_index += 1
             if self.current_piece_index == len(self.current_piece):
-                self.current_piece_index = 0  # reset: go back to the first index
+                self.current_piece_index = 0
             item = self.current_piece[self.current_piece_index]
             self.put(item, display=False)
             self.go_down()
@@ -59,7 +59,6 @@ class Board:
         else:
             self.move(11)
 
-    # shift all the element of a piece i.e. the unique piece and its rotated pieces
     def move(self, step):
         if self.is_piece_onfloor():
             # print("floor")
