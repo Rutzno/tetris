@@ -99,12 +99,12 @@ class Board:
                     self.grid[row][col] = None
 
     def check_left_border(self):
-        return [True if n % 10 == 0 else False
-                for n in self.current_piece[self.current_piece_index]]
+        return any(True if n % 10 == 0 else False
+                   for n in self.current_piece[self.current_piece_index])
 
     def check_right_border(self):
-        return [True if n % 10 == 9 else False
-                for n in self.current_piece[self.current_piece_index]]
+        return any(True if n % 10 == 9 else False
+                   for n in self.current_piece[self.current_piece_index])
 
     def is_piece_onfloor(self):
         return any(True if n // 10 == self.height-1 else False
