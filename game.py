@@ -25,7 +25,7 @@ def main():
     while True:
         command = input()
         if command == "piece":
-            # there is a moving piece
+                # TODO: there is a moving piece
             piece = input()  # I J L O S T Z
             items = get_piece(tetris.symbols[piece])
             tetris.set(items)
