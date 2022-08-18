@@ -29,9 +29,6 @@ def main():
         if command == "piece":
             # there is a moving piece
             piece = input()  # I J L O S T Z
-            # if len(tetris.current_piece):
-            #     tetris.static_blocks.extend(tetris.current_piece[tetris.current_piece_index])
-            # print("static:", tetris.static_blocks)
             items = get_piece(tetris.symbols[piece])
             tetris.set(items)
             # tetris.current_piece.clear()
