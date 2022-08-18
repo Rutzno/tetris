@@ -7,7 +7,6 @@ __version__ = "1.0.4"
 """
 
 
-
 class Board:
     n = 0  # number of instances of this class
     symbols = {
