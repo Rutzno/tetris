@@ -154,7 +154,6 @@ class Board:
 
     def break_(self):
         is_ok = self.is_row_filled()
-        # print("is_ok:", is_ok)
         if is_ok:
             filled_row = is_ok[0]
             # print("row:", filled_row)
