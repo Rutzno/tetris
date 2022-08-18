@@ -32,8 +32,6 @@ def main():
             items = get_piece(tetris.symbols[piece])
             tetris.set(items)
 
-            # print("current_p:", tetris.current_piece[tetris.current_piece_index])
-            # tetris.put(tetris.current_piece[tetris.current_piece_index])
 
         elif command == "exit":
             break
