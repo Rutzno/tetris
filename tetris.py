@@ -153,7 +153,6 @@ class Board:
         return False
 
     def break_(self):
-        # print(self.static_blocks)
         is_ok = self.is_row_filled()
         # print("is_ok:", is_ok)
         if is_ok:
