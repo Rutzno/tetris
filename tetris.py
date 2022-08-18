@@ -2,8 +2,14 @@ import numpy as np
 """
 __author__ = "Mack_TB"
 __since__ = "11/8/2021"
-__version__ = "1.0.3"
+__version__ = "1.0.4"
 """
+
+
+import sys
+from collections import deque
+
+import numpy as np
 
 
 class Board:
@@ -29,10 +35,16 @@ class Board:
         self.grid = np.full((height, width), None)
         self.current_piece = []  # like 'I': [[4, 14, 24, 34], [3, 4, 5, 6]]
         self.current_piece_index = 0
+        self.preview_piece_item = list()
+        # self.last_piece = list()
+        self.static_blocks = list()  #
 
     def rotate(self):
-        if self.is_piece_on_floor():
+        if self.is_piece_on_floor() or self.is_piece_touch_another():
             self.print_grid()
+            if self.is_game_over():
+                print("Game Over!")
+                sys.exit()
         else:
             self.current_piece_index += 1
             if self.current_piece_index == len(self.current_piece):
@@ -44,22 +56,25 @@ class Board:
     def go_down(self):
         self.move(10)
 
-    def go_left(self):
+    def to_left(self):
         if self.is_piece_on_left_border():
             self.go_down()
         else:
             self.move(9)
 
-    def go_right(self):
+    def to_right(self):
         if self.is_piece_on_right_border():
             self.go_down()
         else:
             self.move(11)
 
-    # shift all the elements of a piece i.e. a unique piece and its rotated pieces
+    # shift all the element of a piece i.e. the unique piece and its rotated pieces
     def move(self, step):
-        if self.is_piece_on_floor():
+        if self.is_piece_on_floor() or self.is_piece_touch_another():
             self.print_grid()
+            if self.is_game_over():
+                print("Game Over!")
+                sys.exit()
         else:
             for i in range(len(self.current_piece)):
                 for j in range(len(self.current_piece[i])):
@@ -68,21 +83,28 @@ class Board:
 
     def put(self, item, display=True):
         index = 0
-        self.reset_grid()
+        if len(self.preview_piece_item):
+            self.remove_preview()
         for row in range(self.height):
             for col in range(self.width):
                 value = int(f"{row}{col}")
-                if item[index] == value:
+                if len(item) > 0 and item[index] == value:
                     self.grid[row][col] = 0
                     index += 1
-                    if index > 3:
-                        index = 0
+                    if index >= len(item):
+                        # index = 0
                         break
+            if index >= len(item):
+                break
         if display:
             self.print_grid()
+        self.preview_piece_item.clear()
+        self.preview_piece_item.extend(item)
+        if self.is_piece_on_floor() or self.is_piece_touch_another():
+            self.static_blocks.extend(item)
 
     def print_grid(self):
-        print()
+        # print()
         for row in range(self.height):
             for col in range(self.width):
                 if self.grid[row][col] is None:
@@ -91,12 +113,25 @@ class Board:
                     print(self.grid[row][col], end="") \
                         if col == self.width-1 else print(self.grid[row][col], end=" ")
             print()
+        print()
 
     def reset_grid(self):
         for row in range(self.height):
             for col in range(self.width):
                 if self.grid[row][col] is not None:
                     self.grid[row][col] = None
+
+    def remove_preview(self):
+        index = 0
+        for row in range(self.height):
+            for col in range(self.width):
+                value = int(f"{row}{col}")
+                if self.preview_piece_item[index] == value:
+                    self.grid[row][col] = None
+                    index += 1
+                    if index > 3:
+                        index = 0
+                        break
 
     def is_piece_on_left_border(self):
         return any(True if n % 10 == 0 else False
@@ -110,3 +145,74 @@ class Board:
         return any(True if n // 10 == self.height-1 else False
                    for n in self.current_piece[self.current_piece_index])
 
+    def is_row_filled(self):
+        count = 0
+        for row in range(self.height):
+            for col in range(self.width):
+                if self.grid[row][col] != 0:
+                    break
+                count += 1
+            if count == self.width:
+                return [row, True]
+            count = 0
+        return False
+
+    def break_(self):
+        # print(self.static_blocks)
+        is_ok = self.is_row_filled()
+        # print("is_ok:", is_ok)
+        if is_ok:
+            filled_row = is_ok[0]
+            # print("row:", filled_row)
+            value = (self.height - filled_row) * 10
+            # disappear blocks
+            rows = [i for i in range(filled_row, self.height)]
+            i = 0
+            while i < len(self.static_blocks):
+                if rows.__contains__(self.static_blocks[i] // 10):
+                    self.static_blocks.remove(self.static_blocks[i])
+                    i -= 1
+                i += 1
+
+            self.static_blocks = [i + value for i in self.static_blocks]
+            self.reset_grid()
+            self.static_blocks.sort()
+            self.put(self.static_blocks)
+        else:
+            print("No rows to break!")
+
+    def is_piece_touch_another(self):
+        result = []
+        for i in range(len(self.static_blocks)-1, -1, -1):
+            for cp in self.current_piece[self.current_piece_index]:
+                if abs(self.static_blocks[i] - cp) == 10:
+                    result.append(True)
+                    break
+                else:
+                    result.append(False)
+        return any(result)
+
+    def is_game_over(self):
+        count = 0
+        for col in range(self.width):
+            for row in range(self.height):
+                if self.grid[row][col] != 0:
+                    break
+                count += 1
+            if count == self.height:
+                return True
+            count = 0
+        return False
+
+    def set(self, items):
+        self.current_piece.clear()
+        self.current_piece.extend(items)
+        self.current_piece_index = 0
+        self.preview_piece_item = list()
+        # print("current_p:", self.current_piece[self.current_piece_index])
+        self.put(self.current_piece[self.current_piece_index])
+
+
+class Piece:
+    def __init__(self, item):
+        self.item = item
