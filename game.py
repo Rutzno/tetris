@@ -32,7 +32,6 @@ def main():
             items = get_piece(tetris.symbols[piece])
             tetris.set(items)
 
-
         elif command == "exit":
             break
         elif command == "down":
