@@ -31,7 +31,7 @@ class Board:
         self.current_piece = []  # like 'I': [[4, 14, 24, 34], [3, 4, 5, 6]]
         self.current_piece_index = 0
         self.preview_piece_item = list()
-        self.static_blocks = list()  #
+        self.static_blocks = list()
 
     def rotate(self):
         if self.is_piece_on_floor() or self.is_piece_touch_another():
