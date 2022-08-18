@@ -1,15 +1,11 @@
 import numpy as np
+import sys
 """
 __author__ = "Mack_TB"
 __since__ = "11/8/2021"
 __version__ = "1.0.4"
 """
 
-
-import sys
-from collections import deque
-
-import numpy as np
 
 
 class Board:
