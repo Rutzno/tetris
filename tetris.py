@@ -87,7 +87,6 @@ class Board:
                     self.grid[row][col] = 0
                     index += 1
                     if index >= len(item):
-                        # index = 0
                         break
             if index >= len(item):
                 break
