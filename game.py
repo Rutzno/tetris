@@ -21,9 +21,7 @@ def main():
     width, height = input().split(" ")
     tetris = Board(int(width), int(height))
     tetris.print_grid()
-    # piece = input()  # I J L O S T Z
-    # tetris.current_piece.extend(Board.symbols[piece])
-    # tetris.put(Board.symbols[piece][0])
+
     while True:
         command = input()
         if command == "piece":
