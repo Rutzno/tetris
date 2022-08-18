@@ -31,10 +31,7 @@ def main():
             piece = input()  # I J L O S T Z
             items = get_piece(tetris.symbols[piece])
             tetris.set(items)
-            # tetris.current_piece.clear()
-            # tetris.current_piece.extend(items)
-            # tetris.current_piece_index = 0
-            # tetris.preview_piece_item = list()
+
             # print("current_p:", tetris.current_piece[tetris.current_piece_index])
             # tetris.put(tetris.current_piece[tetris.current_piece_index])
 
