@@ -207,7 +207,3 @@ class Board:
         # print("current_p:", self.current_piece[self.current_piece_index])
         self.put(self.current_piece[self.current_piece_index])
 
-
-class Piece:
-    def __init__(self, item):
-        self.item = item
