@@ -156,7 +156,6 @@ class Board:
         is_ok = self.is_row_filled()
         if is_ok:
             filled_row = is_ok[0]
-            # print("row:", filled_row)
             value = (self.height - filled_row) * 10
             # disappear blocks
             rows = [i for i in range(filled_row, self.height)]
