@@ -21,11 +21,10 @@ def main():
     width, height = input().split(" ")
     tetris = Board(int(width), int(height))
     tetris.print_grid()
-
     while True:
         command = input()
         if command == "piece":
-                # TODO: there is a moving piece
+            #   TODO: there is a moving piece
             piece = input()  # I J L O S T Z
             items = get_piece(tetris.symbols[piece])
             tetris.set(items)
