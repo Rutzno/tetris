@@ -199,6 +199,5 @@ class Board:
         self.current_piece.extend(items)
         self.current_piece_index = 0
         self.preview_piece_item = list()
-        # print("current_p:", self.current_piece[self.current_piece_index])
         self.put(self.current_piece[self.current_piece_index])
 
