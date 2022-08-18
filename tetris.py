@@ -172,15 +172,11 @@ class Board:
             print("No rows to break!")
 
     def is_piece_touch_another(self):
-        result = []
-        for i in range(len(self.static_blocks)-1, -1, -1):
+        for i in range(len(self.static_blocks) - 1, -1, -1):
             for cp in self.current_piece[self.current_piece_index]:
                 if abs(self.static_blocks[i] - cp) == 10:
-                    result.append(True)
-                    break
-                else:
-                    result.append(False)
-        return any(result)
+                    return True
+        return False
 
     def is_game_over(self):
         count = 0
