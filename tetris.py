@@ -86,9 +86,9 @@ class Board:
                 if len(item) > 0 and item[index] == value:
                     self.grid[row][col] = 0
                     index += 1
-                    if index >= len(item):
+                    if index == len(item):
                         break
-            if index >= len(item):
+            if index == len(item):
                 break
         if display:
             self.print_grid()
